@@ -1,0 +1,52 @@
+
+<div class="jumbotron" align="center"> <h2> Welcome to Yahoo Weather </h2> </div>
+
+<div class="container-fluid" style="background-color: lavender;"
+		ng-app="dynamicApp" ng-controller="graphController">
+		
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button class="btn btn-success btn-md" type="button"
+							ng-click=addReport()>
+							Info Search...<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</span> <input type="text" class="form-control"
+						placeholder="Enter Zip Code..." ng-model="location">
+				</div>
+				<!-- /input-group -->
+			</div>
+			<!-- /.col-lg-6 -->
+		
+		<!-- /.row -->
+
+			<div class="col-sm-4 col-md-6" ng-repeat="location in locations">
+				<div class="col-sm-4 col-md-6">
+					<div class="thumbnail">
+						<img src="{{location.query.results.channel.image.url}}" alt="..." height="20" width="40">
+						
+						<h3>{{location.query.results.channel.location.city}}
+							{{location.query.results.channel.location.region}},
+							{{location.query.results.channel.location.country}}</h3>
+
+
+
+						<h4>Date:{{location.query.results.channel.item.forecast[0].date}},
+							Day:{{location.query.results.channel.item.forecast[0].day}}
+							Temperature:{{location.query.results.channel.item.condition.temp}}
+							{{location.query.results.channel.units.temperature}}</h4>
+						<h4>Date:{{location.query.results.channel.item.forecast[1].date}},
+							Day:{{location.query.results.channel.item.forecast[1].day}}
+							Temperature:{{location.query.results.channel.item.forecast[1].high}}
+							{{location.query.results.channel.units.temperature}}</h4>
+						<h4>Date:{{location.query.results.channel.item.forecast[2].date}},
+							Day:{{location.query.results.channel.item.forecast[2].day}}
+							Temperature:{{location.query.results.channel.item.forecast[2].high}}
+							{{location.query.results.channel.units.temperature}}</h4>
+						<h4>Wind Speed: {{location.query.results.channel.wind.speed}}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
